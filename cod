@@ -1,0 +1,40 @@
+#ооп 1
+class Student:
+    def __init__(self, name, grade):
+        self.name = name
+        self.grade = grade
+
+    def get_info(self):
+        return f"Студент: {self.name}, Оценка: {self.grade}"
+
+#ооп 2
+class Shape:
+    def area(self):
+        return 0
+
+class Rectangle(Shape):
+    def __init__(self, a, b):
+        self.a = a
+        self.b = b
+    def area(self):
+        return self.a * self.b
+
+class Circle(Shape):
+    def __init__(self, r):
+        self.r = r
+
+    def area(self):
+        import math
+        return math.pi * self.r ** 2
+
+#ооп 3
+class DatabaseConnection:
+    _instance = None
+
+    def __new__(cls, *args, **kwargs):
+        if cls._instance is None:
+            cls._instance = super().__new__(cls)
+        return cls._instance
+
+    def __init__(self):
+        self.status = "connected"
